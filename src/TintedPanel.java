@@ -7,7 +7,7 @@ public class TintedPanel extends Panel {
 
     // overriding the inherited display method
     public void display(){
-        getPApplet().background(255, 0, 200);
+        getPApplet().tint(255, 0, 200);
         super.display(); // calling the inherited display method
         getPApplet().noTint();// turns off tint effect after the image is displayed
     }

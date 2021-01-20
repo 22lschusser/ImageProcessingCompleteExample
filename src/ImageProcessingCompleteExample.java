@@ -24,8 +24,8 @@ public class ImageProcessingCompleteExample extends PApplet{
         int index = 0;
         for (int i = 0; i < NUM_PANELS_VERTICAL; i++){
             for (int j = 0; j < NUM_PANELS_HORIZONTAL; j++){
-                int w = j * width/NUM_PANELS_HORIZONTAL;
-                int h = i * height/NUM_PANELS_VERTICAL;
+                int w = width/NUM_PANELS_HORIZONTAL;
+                int h = height/NUM_PANELS_VERTICAL;
                 int x = j * w;
                 int y = i * h;
                 Panel s;
@@ -62,8 +62,7 @@ public class ImageProcessingCompleteExample extends PApplet{
     public void mouseClicked(){
         for (int i = 0; i < panels.length; i++){
             Panel s = panels[i];
-            int mouseX;
-            s.handleMouseClicked(s.getPApplet().mouseX, s.getPApplet().mouseY);
+            s.handleMouseClicked(mouseX, mouseY);
         }
     }
 
