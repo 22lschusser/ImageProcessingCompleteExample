@@ -12,7 +12,7 @@ public class RotatingPanel extends Panel {
     public void display() {
         if (!rotating) {
             super.display();
-            getPApplet().tint(0,0,0);
+            getPApplet().fill(0);
             getPApplet().textAlign(getPApplet().CENTER);
             getPApplet().text("Click me!", getX() + getWidth()/2, getY() + getHeight()/2);
         } else {
