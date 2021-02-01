@@ -33,6 +33,10 @@ public class Panel {
         System.out.println("Mouse clicked " + Integer.toString(identifier));
     }
 
+    public void handleKeyPressed(char key) {
+        System.out.println(key);
+    }
+
     public PImage getImage() {
         return img;
     }

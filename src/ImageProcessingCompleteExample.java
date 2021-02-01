@@ -1,10 +1,10 @@
-
+import java.util.*;
 import processing.core.PApplet;
 public class ImageProcessingCompleteExample extends PApplet{
 
     final int NUM_PANELS_HORIZONTAL = 4; // the horizontal quantity of panels
     final int NUM_PANELS_VERTICAL = 4; // the vertical quantity of panels
-    private Panel[] panels;
+    private ArrayList<Panel> panels;
 
     private static PApplet app;
 
@@ -19,7 +19,7 @@ public class ImageProcessingCompleteExample extends PApplet{
     }
 
     public void setup(){
-        panels = new Panel[NUM_PANELS_HORIZONTAL * NUM_PANELS_VERTICAL];
+        panels = new ArrayList<Panel>();
 
         int index = 0;
         for (int i = 0; i < NUM_PANELS_VERTICAL; i++){
@@ -39,7 +39,7 @@ public class ImageProcessingCompleteExample extends PApplet{
                     s = new RotatingPanel( this, x, y, w, h, index);
                 }
                 s.setupImage("data/bunny.png");
-                panels[index] = s;
+                panels.add(index, s);
                 index++;
             }
         }
@@ -53,16 +53,30 @@ public class ImageProcessingCompleteExample extends PApplet{
     public void draw(){
         fancyBackground();
 
-        for (int i = 0; i < panels.length; i++){
-            Panel s = panels[i];
+        for (int i = 0; i < panels.size(); i++){
+            Panel s = panels.get(i);
             s.display();
         }
     }
 
     public void mouseClicked(){
-        for (int i = 0; i < panels.length; i++){
-            Panel s = panels[i];
+        for (int i = 0; i < panels.size(); i++){
+            Panel s = panels.get(i);
             s.handleMouseClicked(mouseX, mouseY);
+        }
+    }
+
+    public void keyPressed(){
+        for (int i = 0; i < panels.size(); i++) {
+            Panel s = panels.get(i);
+            PApplet app = s.getPApplet();
+            s.handleKeyPressed(app.key);
+        }
+        if(key == 'a'){
+            panels.remove(0);
+        }
+        if(key == 's') {
+            panels.get(0).setupImage("data/Unknown.jpeg");
         }
     }
 
